@@ -1,0 +1,50 @@
+<main class="container">
+  <form method="GET" id="country-form">
+    <div class="field has-addons has-addons-right is-horizontal">
+      <p class="control has-icons-left">
+        <span class="select">
+          <select name="origin">
+            <option selected disabled>Country</option>
+            <% countries.forEach(country => { %>
+              <option<% if(country === selectedCountry) { %> selected<% } %>><%= country %></option>
+            <% }) %>
+          </select>
+        </span>
+        <span class="icon is-small is-left">
+          <i class="fa fa-globe"></i>
+        </span>
+      </p>
+    </div>
+  </form>
+  <br>
+  <div class="columns is-multiline">
+    <% avocados.forEach(avocado => { %>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <% if(locals.isAuthenticated) { %>
+          <form method="POST" action="/avocados/<%= avocado.id %>/favorite" class="favorite">
+            <button>
+              <% if(locals.currentUser.hasFavorited(avocado)) { %>
+                <i class="fa fa-heart"></i>
+              <% } else { %>
+                <i class="fa fa-heart-o"></i>
+              <% } %>
+            </button>
+          </form>
+        <% } %>
+        <a href="/avocados/<%= avocado.id %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image">
+                <img src="<%= avocado.image %>" alt="<%= avocado.name %>">
+              </figure>
+            </div>
+            <div class="card-content">
+              <h3 class="title"><%= avocado.name %></h3>
+              <h4 class="subtitle"><%= avocado.origin %></h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</main>

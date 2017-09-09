@@ -4,16 +4,16 @@ mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 mongoose.connect(dbURI, { useMongoClient: true });
 
-const Avocado = require('../models/food');
+const Avocado = require('../models/avocado');
 
 Avocado.collection.drop();
 
 Avocado
   .create([{
     name: 'Nutty Smashed Avocado',
-    ingredients: 'Italy',
+    ingredients: 'Pine nuts',
     method: 'Mash the avocado with a fork',
-    tastingNotes: 'Gorgonzola is traditionally a rich creamy food, but the blue-green ripples add a sharp spicy flavor that provides an excellent contrast to its richness. The taste ranges from mild to sharp, depending on age.',
+    tastingNotes: 'Nutty tasting good on toast!',
     image: 'https://static.independent.co.uk/s3fs-public/styles/story_medium/public/thumbnails/image/2016/06/10/14/falafels-avocado-tahini-dip-middle-eastern-vegetarian-cookbook.jpg'
   },{
     name: 'Baked Eggy Avocado',

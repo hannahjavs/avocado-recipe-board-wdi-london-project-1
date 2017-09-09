@@ -1,7 +1,7 @@
-const Cheese = require('../models/avocado');
+const Avocado = require('../models/avocado');
 
 function avocadosIndex(req, res) {
-  Cheese
+  Avocado
     .find()
     .sort({ name: 1 })
     .exec()
@@ -16,40 +16,40 @@ function avocadosIndex(req, res) {
     })
     .catch(err => res.render('error', { err }));
 }
-
+// NEW
 function avocadosNew(req, res) {
   res.render('avocados/new');
 }
-
+// SHOW
 function avocadosShow(req, res) {
-  Cheese
+  Avocado
     .findById(req.params.id)
     .populate('user')
     .exec()
     .then(avocado => res.render('avocados/show', { avocado }))
     .catch(err => res.render('error', { err }));
 }
-
+// CREATE
 function avocadosCreate(req, res) {
 
   req.body.user = req.currentUser;
 
-  Cheese
+  Avocado
     .create(req.body)
     .then(() => res.redirect('/avocados'))
     .catch(err => res.render('error', { err }));
 }
-
+// EDIT
 function avocadosEdit(req, res) {
-  Cheese
+  Avocado
     .findById(req.params.id)
     .exec()
     .then(avocado => res.render('avocados/edit', { avocado }))
     .catch(err => res.render('error', { err }));
 }
-
+// UPDATE
 function avocadosUpdate(req, res) {
-  Cheese
+  Avocado
     .findById(req.params.id)
     .exec()
     .then(avocado => {
@@ -59,16 +59,16 @@ function avocadosUpdate(req, res) {
     .then(avocado => res.redirect(`/avocados/${avocado.id}`))
     .catch(err => res.render('error', { err }));
 }
-
+// DELETE
 function avocadosDelete(req, res) {
-  Cheese
+  Avocado
     .findById(req.params.id)
     .exec()
     .then(avocado => avocado.remove())
     .then(() => res.redirect('/avocados'))
     .catch(err => res.render('error', { err }));
 }
-
+// FAVORITE
 // This requires the user's favorites to be populated (see `lib/userAuth.js`)
 function avocadosFavorite(req, res) {
   // if the selected avocado is not in the user's favorites
