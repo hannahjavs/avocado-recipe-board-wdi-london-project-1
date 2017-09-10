@@ -1,5 +1,5 @@
 const Avocado = require('../models/avocado');
-
+// INDEX / HOMEPAGE / INDEX OF CHEESES
 function avocadosIndex(req, res) {
   Avocado
     .find()
@@ -31,8 +31,8 @@ function avocadosShow(req, res) {
 }
 // CREATE
 function avocadosCreate(req, res) {
-
-  req.body.user = req.currentUser;
+  // before we create the avocado...
+  req.body.user = req.currentUser;  // the logged in user doesnt have to log in to create a new avocado?
 
   Avocado
     .create(req.body)
@@ -68,22 +68,6 @@ function avocadosDelete(req, res) {
     .then(() => res.redirect('/avocados'))
     .catch(err => res.render('error', { err }));
 }
-// FAVORITE
-// This requires the user's favorites to be populated (see `lib/userAuth.js`)
-function avocadosFavorite(req, res) {
-  // if the selected avocado is not in the user's favorites
-  if(!req.currentUser.favorites.find(avocado => avocado.id === req.params.id)) {
-    // add the avocado id to the user's favorites
-    req.currentUser.favorites.push(req.params.id);
-  } else {
-    // remove the avocado from the user's favorites
-    req.currentUser.favorites = req.currentUser.favorites.filter(avocado => avocado.id !== req.params.id);
-  }
-
-  // save the user
-  req.currentUser.save()
-    .then(() => res.redirect('back'));
-}
 
 module.exports = {
   index: avocadosIndex,
@@ -92,6 +76,5 @@ module.exports = {
   create: avocadosCreate,
   edit: avocadosEdit,
   update: avocadosUpdate,
-  delete: avocadosDelete,
-  favorite: avocadosFavorite
+  delete: avocadosDelete
 };

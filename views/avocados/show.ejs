@@ -2,17 +2,6 @@
   <div class="columns">
     <div class="column">
       <figure class="image">
-        <% if(locals.isAuthenticated) { %>
-          <form method="POST" action="/avocados/<%= avocado.id %>/favorite" class="favorite">
-            <button>
-              <% if(locals.currentUser.hasFavorited(avocado)) { %>
-                <i class="fa fa-heart"></i>
-              <% } else { %>
-                <i class="fa fa-heart-o"></i>
-              <% } %>
-            </button>
-          </form>
-        <% } %>
         <img src="<%= avocado.image %>" alt="<%= avocado.name %>">
       </figure>
     </div>
@@ -23,11 +12,13 @@
         <i class="fa fa-pencil"></i>
       </div>
       <p><%= avocado.tastingNotes %></p>
-      <% if(avocado.user) { %>
-        <p>Added by: <strong><a href="/users/<%= avocado.user.id %>"><%= avocado.user.username %></a></strong></p>
-      <% } %>
+      <%# avocado.user allows the user to add a new avocado%>
+      <%# below displays the username in bold%>
+      <% if (avocado.user) { %>
+        <p>Added by: <strong><%= avocado.user.username %></strong></p>
+        <% } %>
       <br>
-      <% if(avocado.isOwnedBy(locals.currentUser)) { %>
+      <% if(locals.isAuthenticated && avocado.user && avocado.user.id === locals.currentUser.id) { %>
         <form method="POST" action="/avocados/<%= avocado.id %>">
           <input type="hidden" name="_method" value="DELETE">
           <a class="button is-primary" href="/avocados/<%= avocado.id %>/edit">Edit</a>
