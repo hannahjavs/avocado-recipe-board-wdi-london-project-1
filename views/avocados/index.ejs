@@ -20,17 +20,6 @@
   <div class="columns is-multiline">
     <% avocados.forEach(avocado => { %>
       <div class="column is-one-quarter-desktop is-half-tablet">
-        <% if(locals.isAuthenticated) { %>
-          <form method="POST" action="/avocados/<%= avocado.id %>/favorite" class="favorite">
-            <button>
-              <% if(locals.currentUser.hasFavorited(avocado)) { %>
-                <i class="fa fa-heart"></i>
-              <% } else { %>
-                <i class="fa fa-heart-o"></i>
-              <% } %>
-            </button>
-          </form>
-        <% } %>
         <a href="/avocados/<%= avocado.id %>">
           <div class="card">
             <div class="card-image">
