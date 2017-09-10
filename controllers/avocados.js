@@ -1,12 +1,12 @@
 const Avocado = require('../models/avocado');
-// INDEX / HOMEPAGE / INDEX OF CHEESES
+// INDEX / HOMEPAGE / INDEX OF AVOCADOS
 function avocadosIndex(req, res) {
   Avocado
     .find()
     .sort({ name: 1 })
     .exec()
     .then(avocados => {
-      // get countries from the avocados and create a unique array of countries for the dropdown
+      // get countries from the avocado recipes and create a unique array of countries for the dropdown
       const countries = Array.from(new Set(avocados.map(avocado => avocado.origin).sort()));
 
       // if there is an origin in the querystring filter the results
