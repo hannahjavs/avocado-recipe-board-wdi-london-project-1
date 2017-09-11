@@ -1,13 +1,12 @@
 const Recipe = require('../models/recipe');
 // INDEX / HOMEPAGE / INDEX OF AVOCADOS
 function recipesIndex(req, res) {
+  console.log(req.query);
   Recipe
-    .find()
+    .find(req.query)
     .sort({ name: 1 })
     .exec()
-    .then(recipes => {
-      res.render('recipes/index', { recipes });
-    })
+    .then(recipes => res.render('recipes/index', { recipes }))
     .catch(err => res.render('error', { err }));
 }
 // NEW
