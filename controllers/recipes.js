@@ -88,7 +88,7 @@ function recipesCommentsDelete(req, res) {
       comment.remove();
       return recipe.save();
     })
-    .then(recipe => res.redirect(`/recipe/${recipe.id}`))
+    .then(recipe => res.redirect(`/recipes/${recipe.id}`))
     .catch(err => res.render('error', { err }));
 }
 

@@ -26,8 +26,8 @@ URL EXAMPLE:
       <% if(locals.isAuthenticated && recipe.user && recipe.user.id === locals.currentUser.id) { %>
         <form method="POST" action="/recipes/<%= recipe.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <a class="button is-primary" href="/recipes/<%= recipe.id %>/edit">Edit</a>
-          <button class="button is-danger">Delete</button>
+          <a class="button is-primary" href="/recipes/<%= recipe.id %>/edit">Edit Your Recipe</a>
+          <button class="button is-danger">Delete Your Recipe</button>
         </form>
       <% } %>
     </div>
@@ -41,7 +41,6 @@ URL EXAMPLE:
       <textarea name="text"></textarea>
     </div>
 
-    <%# ---- RATE THE RECIPE TICK BOX ---- %>
     <div>
       <label>Rate The Avocado Recipe</label><br>
       <label>
@@ -61,11 +60,10 @@ URL EXAMPLE:
       </label>
     </div>
 
-    <%# ---- ADD COMMENT AND RATING BUTTON ---- %>
-    <button>Add</button>
+
+    <button>Submit Comment</button>
   </form>
 <% } %>
-
 
 <%# ---- PRINTS OUT COMMENTS AND RATING ---- %>
 <% recipe.comments.forEach(comment => { %>
@@ -73,7 +71,6 @@ URL EXAMPLE:
   <%= comment.rating %>
   <%= comment.user.username %>
 <% }) %>
-
 
 <%# ---- ADDING A DELETE BUTTON ---- %>
 <%# We want to add a delete button for each comment on the restaurants show page. We need to create a form for each delete button so that we can use method override to turn the POST request into a DELETE request.%>
@@ -83,7 +80,7 @@ URL EXAMPLE:
       <%= comment.text %> - <%= comment.rating %>/5
       <form method="POST" action="/recipes/<%= recipe.id %>/comments/<%= comment.id %>">
       <input type="hidden" name="_method" value="DELETE">
-      <button>Delete</button>
+      <button class="button is-danger">Delete Comment</button>
       </form>
     </li>
   <% }) %>
