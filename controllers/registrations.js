@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 // create a new registration
 function registrationsNew(req, res) {
-  res.render('registrations/new');
+  res.render('registrations/new'); // render this to the screen
 }
 
 // create a new user

@@ -1,0 +1,31 @@
+<%# EDIT    GET   /recipes/:id/edit    A pre-populated form
+
+URL EXAMPLE:
+8000/recipes/59b64fd492e139117b2963ef/edit %>
+
+<div class="container">
+  <form method="POST" action="/recipes/<%= recipe.id %>">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" value="<%= recipe.name %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input class="input" name="image" type="text" placeholder="Image" value="<%= recipe.image %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Tasting Notes</label>
+      <div class="control">
+        <textarea class="textarea" name="tastingNotes" placeholder="Tasting Notes"><%= recipe.tastingNotes %></textarea>
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+  </form>
+</div>

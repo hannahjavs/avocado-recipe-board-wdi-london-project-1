@@ -4,11 +4,11 @@ mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 mongoose.connect(dbURI, { useMongoClient: true });
 
-const Avocado = require('../models/avocado');
+const Recipe = require('../models/recipe');
 
-Avocado.collection.drop();
+Recipe.collection.drop();
 
-Avocado
+Recipe
   .create([{
     name: 'Nutty Smashed Avocado',
     ingredients: 'Pine nuts',

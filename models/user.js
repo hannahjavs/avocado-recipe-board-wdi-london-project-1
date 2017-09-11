@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// there is a unique on here because it is for password HASHING
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true }, // there is a unique on here because it is for password HASH
+  username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 });
@@ -31,7 +32,7 @@ userSchema.pre('save', function hashPassword(next) {
   next();
 });
 // this.password will be the users text password
-// the more salt there is ona  password the harder it is to hash a password - this is the number 8 for the level of salting.
+// the more salt there is on a password the harder it is to hash a password - this is the number 8 for the level of salting.
 // 8 is the default setting for salting
 
 

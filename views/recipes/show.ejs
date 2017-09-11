@@ -1,0 +1,90 @@
+<%# SHOW    GET   /recipes/:id    Show all the recipes
+
+URL EXAMPLE:
+8000/recipes %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <figure class="image">
+        <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+      </figure>
+    </div>
+    <div class="column">
+      <h3 class="title"><%= recipe.name %></h3>
+      <h4 class="subtitle"><%= recipe.origin %></h4>
+      <div class="icon is-small">
+        <i class="fa fa-pencil"></i>
+      </div>
+      <p><%= recipe.tastingNotes %></p>
+      <%# recipe.user allows the user to add a new recipe%>
+      <%# below displays the username in bold%>
+      <% if (recipe.user) { %>
+        <p>Added by: <strong><%= recipe.user.username %></strong></p>
+        <% } %>
+      <br>
+      <% if(locals.isAuthenticated && recipe.user && recipe.user.id === locals.currentUser.id) { %>
+        <form method="POST" action="/recipes/<%= recipe.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <a class="button is-primary" href="/recipes/<%= recipe.id %>/edit">Edit</a>
+          <button class="button is-danger">Delete</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+
+<%# ---- COMMENT FORM ---- %>
+<% if(locals.isAuthenticated) { %>
+  <form method="POST" action="/recipes/<%= recipe.id %>/comments">
+    <div>
+      <label>Comment</label>
+      <textarea name="text"></textarea>
+    </div>
+
+    <%# ---- RATE THE RECIPE TICK BOX ---- %>
+    <div>
+      <label>Rate The Avocado Recipe</label><br>
+      <label>
+        1 <input type="radio" value="1" name="rating">
+      </label>
+      <label>
+        2 <input type="radio" value="2" name="rating">
+      </label>
+      <label>
+        3 <input type="radio" value="3" name="rating">
+      </label>
+      <label>
+        4 <input type="radio" value="4" name="rating">
+      </label>
+      <label>
+        5 <input type="radio" value="5" name="rating">
+      </label>
+    </div>
+
+    <%# ---- ADD COMMENT AND RATING BUTTON ---- %>
+    <button>Add</button>
+  </form>
+<% } %>
+
+
+<%# ---- PRINTS OUT COMMENTS AND RATING ---- %>
+<% recipe.comments.forEach(comment => { %>
+  <%= comment.text %>
+  <%= comment.rating %>
+  <%= comment.user.username %>
+<% }) %>
+
+
+<%# ---- ADDING A DELETE BUTTON ---- %>
+<%# We want to add a delete button for each comment on the restaurants show page. We need to create a form for each delete button so that we can use method override to turn the POST request into a DELETE request.%>
+<ul>
+  <% recipe.comments.forEach(comment => { %>
+    <li>
+      <%= comment.text %> - <%= comment.rating %>/5
+      <form method="POST" action="/recipes/<%= recipe.id %>/comments/<%= comment.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
