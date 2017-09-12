@@ -37,6 +37,13 @@ Recipe
     recipeType: 'Blended',
     tastingNotes: 'Healthier alternative to just a normal chocolate pudding desert',
     image: 'http://cdn-maf2.heartyhosting.com/sites/muscleandfitness.com/files/styles/full_node_image_1090x614/public/media/1109-chocolate-avocado-pudding-protein-whey.jpg?itok=2AYQPoYN'
+  },{
+    name: 'Chocolate Avocado Cake',
+    ingredients: 'Chocolate, avocado',
+    method: 'Blend the avocado and ...',
+    recipeType: 'Baked',
+    tastingNotes: 'Healthier alternative to just a normal chocolate pudding desert',
+    image: 'http://farm3.static.flickr.com/2482/3723278915_ee25c57870.jpg'
   }])
   .then(avocado => console.log(`${avocado.length} avocados created!`))
   .catch(err => console.log(err))

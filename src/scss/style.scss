@@ -1,6 +1,6 @@
-body {
-  color: #0b210b;
-}
+// body {
+//   color: #0b210b;
+// }
 
 .navbar-end {
   border: 1px solid black;
@@ -22,4 +22,30 @@ a {
 
 h1 {
   color: #6aa346;
+}
+
+
+header {
+  color: black;
+  flex-direction: row;
+  }
+  .navbar-inverse .navbar-brand, .navbar-inverse .navbar-toggler {
+    color: black;
+  }
+
+.container-fluid {
+  margin: 5px 0 10px 0;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+li {
+  list-style: none;
+  padding: 0 10px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  padding-top: 15px;
+  font-size: 1.25rem;
 }
