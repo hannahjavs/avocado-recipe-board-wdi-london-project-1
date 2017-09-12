@@ -2,19 +2,21 @@
 
 URL EXAMPLE:
 8000/recipes %>
+
 <%# CATEGORISE AVOCADO RECIPE TYPE %>
 <main class="container">
   <div class="row">
     <div class="col-md-3">
-      <form method="GET" id="recipeType-form">
+      <form method="GET" id="recipeType-form" action="/recipes">
         <div class="form-group">
-          <select class="form-control" id="exampleSelect2">
+          <select class="form-control" name="recipeType">
             <option selected disabled>Avocado Recipe Type</option>
             <option>Mashed</option>
             <option>Baked</option>
             <option>Chopped</option>
             <option>Blended</option>
             <option>Frozen</option>
+            <option>Juiced</option>
           </select>
         </div>
       </form>

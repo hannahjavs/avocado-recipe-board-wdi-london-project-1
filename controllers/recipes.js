@@ -2,6 +2,8 @@ const Recipe = require('../models/recipe');
 // INDEX / HOMEPAGE / INDEX OF AVOCADOS
 function recipesIndex(req, res) {
   console.log(req.query);
+  // if we're submitting the search form
+  if(req.query.name) req.query = { name: new RegExp(req.query.name, 'i') };
   Recipe
     .find(req.query)
     .sort({ name: 1 })

@@ -4,28 +4,50 @@ URL EXAMPLE:
 8000/recipes/59b64fd492e139117b2963ef/edit %>
 
 <div class="container">
-  <form method="POST" action="/recipes/<%= recipe.id %>">
-    <input type="hidden" name="_method" value="PUT">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form method="POST" action="/recipes/<%= recipe.id %>">
+        <input type="hidden" name="_method" value="PUT">
+
     <div class="field">
-      <label class="label">Name</label>
+      <label class="label">Name Of Recipe</label>
       <div class="control">
-        <input class="input" name="name" type="text" placeholder="Name" value="<%= recipe.name %>">
+        <input class="input form-control" name="name" type="text" placeholder="Name" value="<%= recipe.name %>">
       </div>
     </div>
-    <div class="field">
+
+    <div class="form-group">
+      <label class="label">Recipe Method</label>
+      <div class="control">
+        <textarea class="textarea form-control" name="method" placeholder="Edit/Update your recipe method" maxlength="800"><%= recipe.method %></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label class="label">Image</label>
       <div class="control">
-        <input class="input" name="image" type="text" placeholder="Image" value="<%= recipe.image %>">
-      </div>      
-    </div>
-    <div class="field">
-      <label class="label">Tasting Notes</label>
-      <div class="control">
-        <textarea class="textarea" name="tastingNotes" placeholder="Tasting Notes"><%= recipe.tastingNotes %></textarea>
+        <input class="input form-control" name="image" type="text" placeholder="Image" value="<%= recipe.image %>">
       </div>
     </div>
+
+      <div class="form-group">
+        <label class="label">Update Ingredients</label>
+        <div class="control">
+          <textarea class="textarea form-control" name="ingredients" placeholder="Update Ingredients"><%= recipe.ingredients %></textarea>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label class="label">Tasting Notes (380 chars max length)</label>
+      <div class="control">
+        <textarea class="textarea form-control" name="tastingNotes" placeholder="Tasting Notes"><%= recipe.tastingNotes %></textarea>
+      </div>
+    </div>
+
     <div class="control">
-      <button class="button is-primary">Submit</button>
+      <button class="btn btn-success">Submit</button>
     </div>
   </form>
+</div>
+</div>
 </div>
