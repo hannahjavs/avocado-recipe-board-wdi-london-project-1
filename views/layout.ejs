@@ -5,7 +5,7 @@
   <title>Avocado Recipe Board</title>
   <%- include ./partials/_stylesheets %>
 </head>
-<body>
+<body <% if(locals.isHomepage) { %>class="home"<% } %>>
   <%- include ./partials/_navbar %>
   <% if(!locals.isHomepage) { %><main class="section"><% } %>
     <% for (const type in messages) { %>

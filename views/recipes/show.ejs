@@ -5,19 +5,19 @@ URL EXAMPLE:
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-4 leftColShow">
       <figure class="image">
         <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
       </figure>
-    </div>
+
     <div class="column">
       <h3 class="title"><%= recipe.name %></h3>
       <h4 class="subtitle"><%= recipe.origin %></h4>
       <div class="icon is-small">
         <i class="fa fa-pencil"></i>
       </div>
-      <p><%= recipe.tastingNotes %></p>
-      <%# recipe.user allows the user to add a new recipe%>
+
+      <p><%= recipe.tastingNotes %></p><%# recipe.user allows the user to add a new recipe%>
       <%# below displays the username in bold%>
       <% if (recipe.user) { %>
         <p>Added by: <strong><%= recipe.user.username %></strong></p>
@@ -31,17 +31,36 @@ URL EXAMPLE:
         </form>
       <% } %>
     </div>
-  </div>
+<%# PRINTING OUT THE INGREDIENTS IN A LIST FORMAT %>
+<h3>Ingredients</h3>
+<ul>
+<% recipe.ingredients.forEach(ingredient => {%>
+    <li class="bulletPoint"><%= ingredient %></li>
+  <%})
+%>
+</ul>
+</div>
+<%# PRINTING OUT THE METHOD IN BULLET POINT STYLE%>
 
+<div class="col-4 leftColShow">
+  <h3>METHOD</h3>
+  <ul>
+    <% recipe.method.forEach(method => {%>
+      <li class="bulletPoint"><%= method %></li>
+    <%})
+    %>
+  </ul>
+</div>
 <%# ---- COMMENT FORM ---- %>
+<div class="col-4 leftCommentColShow">
 <% if(locals.isAuthenticated) { %>
-  <form method="POST" action="/recipes/<%= recipe.id %>/comments">
-    <div>
+  <form method="POST" action="/recipes/<%= recipe.id %>/comments" class="commentForm">
+    <div class="form-group">
       <label>Comment</label>
-      <textarea name="text"></textarea>
+      <textarea name="text"  class="form-control"></textarea>
     </div>
 
-    <div>
+    <div class="form-group">
       <label>Rate The Avocado Recipe</label><br>
       <label>
         1 <input type="radio" value="1" name="rating">
@@ -60,28 +79,24 @@ URL EXAMPLE:
       </label>
     </div>
 
-
-    <button>Submit Comment</button>
+    <button class="btn btn-success">Submit Comment</button>
   </form>
 <% } %>
 
 <%# ---- PRINTS OUT COMMENTS AND RATING ---- %>
-<% recipe.comments.forEach(comment => { %>
-  <%= comment.text %>
-  <%= comment.rating %>
-  <%= comment.user.username %>
-<% }) %>
-
-<%# ---- ADDING A DELETE BUTTON ---- %>
+<%# ---- PRINTING A COMMENTS DELETE BUTTON ---- %>
 <%# We want to add a delete button for each comment on the restaurants show page. We need to create a form for each delete button so that we can use method override to turn the POST request into a DELETE request.%>
 <ul>
   <% recipe.comments.forEach(comment => { %>
     <li>
-      <%= comment.text %> - <%= comment.rating %>/5
+      <%= comment.text %> - <%= comment.rating %>/5 - <%= comment.user.username %>
       <form method="POST" action="/recipes/<%= recipe.id %>/comments/<%= comment.id %>">
       <input type="hidden" name="_method" value="DELETE">
-      <button class="button is-danger">Delete Comment</button>
+      <button class="btn btn-danger">X</button>
       </form>
     </li>
   <% }) %>
 </ul>
+</div>
+</div>
+</div>

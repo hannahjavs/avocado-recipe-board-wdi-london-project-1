@@ -4,38 +4,31 @@ URL EXAMPLE:
 8000/recipes %>
 <%# CATEGORISE AVOCADO RECIPE TYPE %>
 <main class="container">
-  <form method="GET" id="recipeType-form">
-    <div class="field has-addons has-addons-right is-horizontal">
-      <p class="control has-icons-left">
-        <span class="select">
-          <select name="recipeType">
+  <div class="row">
+    <div class="col-md-3">
+      <form method="GET" id="recipeType-form">
+        <div class="form-group">
+          <select class="form-control" id="exampleSelect2">
             <option selected disabled>Avocado Recipe Type</option>
             <option>Mashed</option>
             <option>Baked</option>
             <option>Chopped</option>
             <option>Blended</option>
+            <option>Frozen</option>
           </select>
-        </span>
-        <span class="icon is-small is-left">
-          <i class="fa fa-globe"></i>
-        </span>
-      </p>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 
+<%# prints background home page image print to the screen%>
   <div class="row">
     <% recipes.forEach(recipe => { %>
       <div class="col-sm-6 col-md-6 col-lg-3">
         <a href="/recipes/<%= recipe.id %>">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image">
-                <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
-              </figure>
-            </div>
-            <div class="card-content">
-              <h3 class="title"><%= recipe.name %></h3>
-              <h4 class="subtitle"><%= recipe.origin %></h4>
+          <div class="tile" style="background-image:url(<%= recipe.image %>)">
+            <div class="tile-inner">
+              <h3><%= recipe.name %></h3>
             </div>
           </div>
         </a>
