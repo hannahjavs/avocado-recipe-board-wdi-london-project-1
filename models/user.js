@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-  favorites: [{ type: mongoose.Schema.ObjectId, ref: 'Recipe' }] // array for users favorites to be stored
+  password: { type: String, required: true },
+  favorites: [{ type: mongoose.Schema.ObjectId, ref: 'Recipe' }] // FOR USER  FAVORITNG - array for users favorites to be stored
 });
 
 // A virtual has two methods its a SET and a GET
@@ -48,7 +48,7 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 // pre and remove, delete data m post remove
 
 
-// user has favorited
+// FOR USER  FAVORITNG
 userSchema.methods.hasFavorited = function hasFavorited(recipe) {
   if(!recipe) return false;
   return !!this.favorites.find(_recipe => recipe.id === _recipe.id);

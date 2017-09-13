@@ -1,0 +1,67 @@
+<div class="container">
+  <h3 class="title"><%= user.username %></h3>
+  <p><%= user.email %></p>
+  <br>
+  <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
+    <form method="POST" action="/users/<%= user.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <a class="button is-primary" href="/users/<%= user.id %>/edit">Edit</a>
+      <button class="button is-danger">Delete</button>
+    </form>
+  <% } %>
+  <br>
+  <h4 class="title">Recipes Added</h4>
+  <div class="columns is-multiline">
+    <% user.recipes.forEach(recipe => { %>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <a href="/recipes/<%= recipe.id %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image">
+                <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+              </figure>
+            </div>
+            <div class="card-content">
+              <h3 class="title"><%= recipe.name %></h3>
+              <h4 class="subtitle"><%= recipe.origin %></h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+
+  <br>
+  <h4 class="title">Favorites</h4>
+  <div class="columns is-multiline">
+    <% user.favorites.forEach(recipe => { %>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <% if(locals.isAuthenticated) { %>
+          <form method="POST" action="/recipes/<%= recipe.id %>/favorite" class="favorite">
+            <button>
+              <% if(locals.currentUser.hasFavorited(recipe)) { %>
+                <i class="fa fa-heart"></i>
+              <% } else { %>
+                <i class="fa fa-heart-o"></i>
+              <% } %>
+            </button>
+          </form>
+        <% } %>
+
+        <a href="/recipes/<%= recipe.id %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image">
+                <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+              </figure>
+            </div>
+            <div class="card-content">
+              <h3 class="title"><%= recipe.name %></h3>
+              <h4 class="subtitle"><%= recipe.origin %></h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>

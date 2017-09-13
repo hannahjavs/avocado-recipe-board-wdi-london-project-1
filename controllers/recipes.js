@@ -95,6 +95,30 @@ function recipesCommentsDelete(req, res) {
 
 // Here we are first of all finding the recipe that contains the comment that we want to delete, then finding the comment that we want to delete inside the recipe.comments array. We then remove it using .remove(), and finally save the recipe. We then direct the user back to the /recipe/:id page.
 
+
+
+
+
+// FOR USER FAVORITING
+// This requires the user's favorites to be populated (see `lib/userAuth.js`)
+function recipesFavorite(req, res) {
+  // if the selected recipe is not in the user's favorites
+  if(!req.currentUser.favorites.find(recipe => recipe.id === req.params.id)) {
+    // add the recipe id to the user's favorites
+    req.currentUser.favorites.push(req.params.id);
+  } else {
+    // remove the recipe from the user's favorites
+    req.currentUser.favorites = req.currentUser.favorites.filter(recipe => recipe.id !== req.params.id);
+  }
+
+  // save the user
+  req.currentUser.save()
+    .then(() => res.redirect('back'));
+}
+
+
+
+
 // Export the recipes functions inside module.exports:
 module.exports = {
   index: recipesIndex,
@@ -105,5 +129,6 @@ module.exports = {
   update: recipesUpdate,
   delete: recipesDelete,
   commentsCreate: recipesCommentsCreate,
-  commentsDelete: recipesCommentsDelete
+  commentsDelete: recipesCommentsDelete,
+  favorite: recipesFavorite // FOR USER FAVORITING
 };

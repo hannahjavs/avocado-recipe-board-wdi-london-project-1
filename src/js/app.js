@@ -11,13 +11,8 @@ if($recipeType.length > 0) $recipeType.find('select').on('change', () => $recipe
 
 if($form.length>0) $form.validate();
 
-// function copyContent () {
-//   document.getElementById("hiddenTextArea").value =
-//   document.getElementById("myContentEditable").innerText;
-//   return true;
-// }
 
-
+// FOR USER FAVORITNG
 if($favoriteForm.length > 0) {
   $favoriteForm.on('submit', (e) => {
     e.preventDefault();

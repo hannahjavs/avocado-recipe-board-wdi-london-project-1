@@ -29,6 +29,10 @@ router.route('/recipes/:id')
 router.route('/recipes/:id/edit')
   .get(secureRoute, recipes.edit);
 
+// FOR USER FAVORITING
+router.route('/recipes/:id/favorite')
+  .post(secureRoute, recipes.favorite);
+
 // REGISTER
 router.route('/register')
   .get(registrations.new) // get the register form
@@ -47,7 +51,6 @@ router.route('/recipes/:id/comments')
 // Inside config/routes.js add a route for the delete request
 router.delete('/recipes/:id/comments/:commentId', recipes.commentsDelete);
 // Here the :id will be the id of the recipe, and the :commentId is the id of the comment we want to delete.
-
 
 // DELETE
 router.get('/logout', sessions.delete); // when we log out we will delete the session and logout
