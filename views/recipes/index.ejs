@@ -23,7 +23,7 @@ URL EXAMPLE:
     </div>
   </div>
 
-<%# prints background home page image print to the screen%>
+<%# --- prints background home page image print to the screen --- %>
   <div class="row">
     <% recipes.forEach(recipe => { %>
       <div class="col-sm-6 col-md-6 col-lg-3">
@@ -38,3 +38,17 @@ URL EXAMPLE:
     <% }) %>
   </div>
 </main>
+
+<%# --- PRINTS HEARTS FOR FAVORITING --- %>
+<div class="columns is-multiline">
+  <% recipes.forEach(recipe => { %>
+    <div class="column is-one-quarter-desktop is-half-tablet">
+      <% if(locals.isAuthenticated) { %>
+        <form method="POST" action="/recipes/<%= recipe.id %>/favorite" class="favorite">
+          <button>
+            <% if(locals.currentUser.hasFavorited(recipe)) { %>
+              <i class="fa fa-heart"></i>
+            <% } else { %>
+              <i class="fa fa-heart-o"></i>
+            <% } %>
+          </button>
