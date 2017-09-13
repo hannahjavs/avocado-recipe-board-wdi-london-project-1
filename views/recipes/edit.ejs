@@ -9,45 +9,58 @@ URL EXAMPLE:
       <form method="POST" action="/recipes/<%= recipe.id %>">
         <input type="hidden" name="_method" value="PUT">
 
-    <div class="field">
-      <label class="label">Name Of Recipe</label>
-      <div class="control">
-        <input class="input form-control" name="name" type="text" placeholder="Name" value="<%= recipe.name %>">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="label">Recipe Method</label>
-      <div class="control">
-        <textarea class="textarea form-control" name="method" placeholder="Edit/Update your recipe method" maxlength="800"><%= recipe.method %></textarea>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="label">Image</label>
-      <div class="control">
-        <input class="input form-control" name="image" type="text" placeholder="Image" value="<%= recipe.image %>">
-      </div>
-    </div>
-
-      <div class="form-group">
-        <label class="label">Update Ingredients</label>
-        <div class="control">
-          <textarea class="textarea form-control" name="ingredients" placeholder="Update Ingredients"><%= recipe.ingredients %></textarea>
+        <div class="form-group">
+          <label class="label"><strong>Recipe Name</strong></label>
+          <div class="control">
+            <input class="input form-control" name="name" type="text" placeholder="Enter recipe name..." value="<%= recipe.name %>">
+          </div>
         </div>
-      </div>
 
-    <div class="form-group">
-      <label class="label">Tasting Notes (380 chars max length)</label>
-      <div class="control">
-        <textarea class="textarea form-control" name="tastingNotes" placeholder="Tasting Notes"><%= recipe.tastingNotes %></textarea>
-      </div>
-    </div>
+        <div class="form-group">
+          <label class="label"><strong>Avocado Recipe Type</strong></label>
+          <select class="form-control" name="recipeType">
+            <option selected disabled>Select</option>
+            <option>Mashed</option>
+            <option>Baked</option>
+            <option>Chopped</option>
+            <option>Blended</option>
+            <option>Frozen</option>
+            <option>Juiced</option>
+          </select>
+        </div>
 
-    <div class="control">
-      <button class="btn btn-success">Submit</button>
+        <div class="form-group">
+          <label class="label"><strong>Method</strong></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="method" placeholder="Make a new line for each method step" maxlength="900"><%= recipe.methodString %></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label"><strong>Ingredients</strong></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="ingredients" placeholder="List one ingedient per line" maxlength="900"><%= recipe.ingredientsString %></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label"><strong>Image</strong></label>
+          <div class="control">
+            <input class="input form-control" name="image" type="text" placeholder="Input image URL" value="<%= recipe.image %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label"><strong>Tasting Notes</strong> <i>(900 chars max length)</i></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="tastingNotes" placeholder="Tasting Notes (380 chars max length)" maxlength="900"><%= recipe.tastingNotes %></textarea>
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="btn btn-success"><strong>Submit</strong></button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
-</div>
+  </div>
 </div>

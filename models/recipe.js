@@ -18,5 +18,27 @@ const recipeSchema = new mongoose.Schema({
   comments: [ commentsSchema ]
 });
 
+// ARRAY CREATED FOR INGREDIENTS
+recipeSchema.path('ingredients')
+  .set(function createIngredientArray(ingredients) {
+    return ingredients.split('\n'); // split used to turn into an array
+  });
+
+recipeSchema.virtual('ingredientsString')
+  .get(function getIngredientsString() {
+    return this.ingredients.join('\n');
+  });
+
+// ARRAY CREATED FOR METHOD
+recipeSchema.path('method')
+  .set(function createMethodArray(method) {
+    return method.split('\n');
+  });
+
+recipeSchema.virtual('methodString')
+  .get(function getMethodString() {
+    return this.method.join('\n');
+  });
+
 // if you dont export then JS cannot find anything to make functions work
 module.exports = mongoose.model('Recipe', recipeSchema);

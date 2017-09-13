@@ -9,58 +9,57 @@ URL EXAMPLE:
       <form method="POST" action="/recipes">
         <div class="form-group">
 
-          <label class="label">Name Of Recipe</label>
+          <label class="label"><strong>Recipe Name</strong></label>
           <div class="control">
-            <input class="input form-control" name="name" type="text" placeholder="Name" required>
+            <input class="input form-control" name="name" type="text" placeholder="Enter recipe name..." required>
           </div>
         </div>
 
-      <div class="form-group">
-        <label class="label">Recipe Type - Frozen, chopped, blended, smashed, baked..?</label>
-        <div class="control">
-          <input class="input form-control" name="recipeType" type="text" placeholder="Enter Recipe Type" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Recipe Method</label>
-        <div class="control">
-          <textarea class="textarea form-control" name="method" placeholder="Please explain your recipe method" maxlength="800"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Image</label>
-        <div class="control">
-          <input class="input form-control" name="image" type="text" placeholder="Image" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Ingredients</label>
-        <div class="control">
-          <textarea class="textarea form-control" name="ingredients" placeholder="Bullet point ingredients!" maxlength="800"></textarea>
+        <div class="form-group">
+          <label class="label"><strong>Avocado Recipe Type</strong></label>
+          <select class="form-control" name="recipeType">
+            <option selected disabled>Select</option>
+            <option>Mashed</option>
+            <option>Baked</option>
+            <option>Chopped</option>
+            <option>Blended</option>
+            <option>Frozen</option>
+            <option>Juiced</option>
+          </select>
         </div>
 
-<%# <textarea name="ingredients" type="hidden" form action="whatever" onsubmit="return copyContent()" id="textarea" contenteditable="true">
-  <ul>
-    <li>List your item here</li>
-    <li>List your item here</li>
-    <li>List your item here</li>
-  </ul>
-</textarea>%>
-
-      <div class="form-group">
-        <label class="label">Tasting Notes (380 chars max length)</label>
-        <div class="control">
-          <textarea class="textarea form-control" name="tastingNotes" placeholder="Tasting Notes (380 chars max length)" maxlength="380"></textarea>
+        <div class="form-group">
+          <label class="label"><strong>Method</strong></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="method" placeholder="Make a new line for each method step" maxlength="900"></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="control">
-        <button class="btn btn-success">Submit</button>
-      </div>
-    </form>
+        <div class="form-group">
+          <label class="label"><strong>Ingredients</strong> <i>(900 chars max length)</i></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="ingredients" placeholder="List one ingedient per line" maxlength="900"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label"><strong>Image</strong></label>
+          <div class="control">
+            <input class="input form-control" name="image" type="text" placeholder="Input image URL" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label"><strong>Tasting Notes</strong> <i>(900 chars max length)</i></label>
+          <div class="control">
+            <textarea class="textarea form-control" name="tastingNotes" placeholder="Tasting Notes (900 chars max length)" maxlength="900"></textarea>
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="btn btn-success"><strong>Submit</strong></button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </div>

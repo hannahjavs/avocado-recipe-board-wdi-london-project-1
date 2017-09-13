@@ -111,6 +111,8 @@ Recipe
 
     method: ['Blend avocado, lemon juice', 'lemon zest and sweetened condensed milk until smooth.', 'Pour mixture into prepared pie crust.', 'Top with whipped cream and sliced almonds, if desired.','Place pie in refrigerator for 3-4 hours and allow to set.','Slice and serve.','Serving Suggestion: Use a pastry bag to pipe the whipped cream onto the pie like a pro!'],
 
+    recipeType: 'Baked',
+
     tastingNotes: 'Aesthetically pleasing!',
 
     image: 'https://www.californiaavocado.com/getattachment/703df9ac-4ecd-4ba0-b2f4-54fc1462bd6b/California-Summer-Avocado-Pie'
@@ -139,17 +141,29 @@ Recipe
 
     image: 'http://1.bp.blogspot.com/-xsuSlZo_HhQ/Uppi0jh-V8I/AAAAAAAAHfI/SsaQRsus-AU/s1600/130628-2045-8905.jpg'
   },{
-    name: 'Chopped Chicken & Savacado!',
+    name: 'Chopped Chicken Avocado Filling!',
 
     ingredients: ['3 large avocados','Juice of 1 lime','1 tsp cumin','½ tsp ground coriander','2 chicken breasts (cooked) or 2.5 cups of shredded chicken','5 strips of bacon (I use turkey bacon)'],
 
     method: ['Begin by cooking your bacon to your liking. Mine generally takes about 5 minutes per side on Medium-Medium high heat.', 'Mash up your avocado with a fork in a large bowl. Add lime and spices (reserve the salt for the very end).','Mix in chicken, bacon and pecans.','Salt to taste.','Serve over greens, in a wrap, or on bread as a sandwich.'],
 
-    recipeType: 'Juiced',
+    recipeType: 'Chopped',
 
     tastingNotes: 'Alcoholic! Sour and refreshing!',
 
     image: 'http://wholesomelicious-8101.kxcdn.com/wp-content/uploads/2017/06/Avocado-Chicken-Salad-with-Bacon-Photo--1024x683.jpg'
+  },{
+    name: 'Avocado Rissotto',
+
+    ingredients: ['1tbsp oil','1 onion, diced','3 cloves garlic, minced','190g arborio rice','1 vegetable stock cube','1l hot water','2 avocados','100g edam cheese, grated or diced','2tbsp fresh parsley, chopped','1tbsp lime juice','Salt & Black pepper'],
+
+    method: ['Heat the oil in a large frying pan, wok or risotto pan, and cook the onion and garlic over a medium-low heat for 5 minutes, until soft and translucent. Add the rice and cook for a further 2 minutes.','Mix the stock cube with about 150ml hot water, and add to the pan. Cook, stirring, until the liquid has nearly all been absorbed.',' Add more hot water around 150ml at a time, again waiting for it to be mostly absorbed before adding more, and stirring regularly.','Continue adding water until the rice is cooked - I ended up using just over a litre, but you might need slightly more or less.','Meanwhile, coarsely mash the avocado with a fork, along with the lime juice and salt and pepper.','When the rice is cooked, add the edam, then the mashed avocado and chopped parsley, and mix until combined. Serve warm.'],
+
+    recipeType: 'Baked',
+
+    tastingNotes: 'Warm & wholesome!',
+
+    image: 'http://www.amuse-your-bouche.com/wp-content/uploads/2013/05/Avocado-risotto-1-1024x714.jpg'
   },{
     name: 'Avocado Rissotto',
 

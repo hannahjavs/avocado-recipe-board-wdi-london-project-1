@@ -3,10 +3,6 @@
 URL EXAMPLE:
 8000/recipes %>
 
-
-
-
-
 <%# --- FOR USER FAVORITNG --- %>
 <div class="container">
   <div class="columns">
@@ -23,14 +19,9 @@ URL EXAMPLE:
             </button>
           </form>
         <% } %>
-        <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+
       </figure>
     </div>
-
-
-
-
-
 
 
 <div class="container">
@@ -69,22 +60,18 @@ URL EXAMPLE:
       <% } %>
     </div>
 </div>
+
 <%# PRINTING OUT THE INGREDIENTS IN A LIST FORMAT %>
 <div class="col-4 leftColShow">
 <h3>Recipe Ingredients</h3>
 <ul>
 <% recipe.ingredients.forEach(ingredient => {%>
     <li class="bulletPoint"><%= ingredient %></li>
-  <%})
-%>
+  <%})%>
 </ul>
 
-
-
 <%# PRINTING OUT THE METHOD IN BULLET POINT STYLE%>
-
-
-  <h3>Recipe Method</h3>
+<h3>Recipe Method</h3>
   <ul>
     <% recipe.method.forEach(method => {%>
       <li class="bulletPoint"><%= method %></li>
