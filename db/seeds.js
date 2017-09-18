@@ -149,7 +149,7 @@ Recipe
 
     recipeType: 'Chopped',
 
-    tastingNotes: 'Alcoholic! Sour and refreshing!',
+    tastingNotes: 'Chickeny!',
 
     image: 'http://wholesomelicious-8101.kxcdn.com/wp-content/uploads/2017/06/Avocado-Chicken-Salad-with-Bacon-Photo--1024x683.jpg'
   },{
@@ -164,19 +164,6 @@ Recipe
     tastingNotes: 'Warm & wholesome!',
 
     image: 'http://www.amuse-your-bouche.com/wp-content/uploads/2013/05/Avocado-risotto-1-1024x714.jpg'
-  },{
-    name: 'Avocado Rissotto',
-
-    ingredients: ['1tbsp oil','1 onion, diced','3 cloves garlic, minced','190g arborio rice','1 vegetable stock cube','1l hot water','2 avocados','100g edam cheese, grated or diced','2tbsp fresh parsley, chopped','1tbsp lime juice','Salt & Black pepper'],
-
-    method: ['Heat the oil in a large frying pan, wok or risotto pan, and cook the onion and garlic over a medium-low heat for 5 minutes, until soft and translucent. Add the rice and cook for a further 2 minutes.','Mix the stock cube with about 150ml hot water, and add to the pan. Cook, stirring, until the liquid has nearly all been absorbed.',' Add more hot water around 150ml at a time, again waiting for it to be mostly absorbed before adding more, and stirring regularly.','Continue adding water until the rice is cooked - I ended up using just over a litre, but you might need slightly more or less.','Meanwhile, coarsely mash the avocado with a fork, along with the lime juice and salt and pepper.','When the rice is cooked, add the edam, then the mashed avocado and chopped parsley, and mix until combined. Serve warm.'],
-
-    recipeType: 'Baked',
-
-    tastingNotes: 'Warm & wholesome!',
-
-    image: 'http://www.amuse-your-bouche.com/wp-content/uploads/2013/05/Avocado-risotto-1-1024x714.jpg'
-
   }])
   .then(avocado => console.log(`${avocado.length} avocados created!`))
   .catch(err => console.log(err))

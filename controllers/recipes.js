@@ -3,7 +3,7 @@ const Recipe = require('../models/recipe');
 function recipesIndex(req, res) {
   console.log(req.query);
   // if we're submitting the search form
-  if(req.query.name) req.query = { name: new RegExp(req.query.name, 'i') };
+  if(req.query.name) req.query = { name: new RegExp(req.query.name, 'i') }; // capital insensitive
   Recipe
     .find(req.query)
     .sort({ name: 1 })
@@ -95,10 +95,6 @@ function recipesCommentsDelete(req, res) {
 
 // Here we are first of all finding the recipe that contains the comment that we want to delete, then finding the comment that we want to delete inside the recipe.comments array. We then remove it using .remove(), and finally save the recipe. We then direct the user back to the /recipe/:id page.
 
-
-
-
-
 // FOR USER FAVORITING
 // This requires the user's favorites to be populated (see `lib/userAuth.js`)
 function recipesFavorite(req, res) {
@@ -110,13 +106,10 @@ function recipesFavorite(req, res) {
     // remove the recipe from the user's favorites
     req.currentUser.favorites = req.currentUser.favorites.filter(recipe => recipe.id !== req.params.id);
   }
-
   // save the user
   req.currentUser.save()
     .then(() => res.redirect('back'));
 }
-
-
 
 
 // Export the recipes functions inside module.exports:

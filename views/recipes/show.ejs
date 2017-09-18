@@ -12,7 +12,7 @@ URL EXAMPLE:
           <form method="POST" action="/recipes/<%= recipe.id %>/favorite" class="favorite">
             <button>
               <% if(locals.currentUser.hasFavorited(recipe)) { %>
-                <i class="fa fa-heart"></i>
+                <i class="show fa fa-heart"></i>
               <% } else { %>
                 <i class="fa fa-heart-o"></i>
               <% } %>

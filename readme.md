@@ -33,19 +33,6 @@ Challenges faced
 
 One of the challenges faced while producing this project was making the method and the ingredients list turn into bullet points when the user was filling in the 'new recipe form'.
 
-As the Spotify API is designed only to make calls for specific information about Songs, Artists and related Artists, I had to build out a set of API calls with logic to aquire the information I wanted. Put simply, the Back End tracks controller must-
-
-Make a call to request an access token
-Request a search return from a query string given by the input
-Request the audio feautures of the track which is returned by the query
-Request the returned Artist's related artist list, then select one at random
-Request the new Artist's top 5 tracks
-Request the audio features of those tracks
-Compare each of the returned track's audio feature's 'Danceability' rating
-Return the song with the rating which most closely matches the original's
-Finally, request the track's information using it's Id to get it's Artist and Track names
-Improvements
-
 I am proud of the functionality of the site, I do however feel that the styling has a long way to go. I would also like to work on some functionality to see if I could get the videos to 'auto-play' in sequence once they have been saved to the video playlist.
 
 A major drawback of the functionality is also due to the Front End build. If a user adds the song to the setlist to save for later, the page is refreshed, loosing any suggestions or videos which are lined up, amounting to a poor user experience. To solve this problem, I may have to rebuild the Front End as an Angular App, which allows for the DB and view to be updated without refreshing the page. Though this would involve alot of work, I think the benefit's of the improved UX would be worth while.
